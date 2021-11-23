@@ -1,1 +1,1 @@
-# the-milky-way
+# The Milky Way
