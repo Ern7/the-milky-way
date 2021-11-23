@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import UIKit
 
 class ItemListViewModel {
     var itemsViewModel: [ItemViewModel]
@@ -73,5 +75,14 @@ extension ItemViewModel {
             return self.item.data[0].datumDescription
         }
         return ""
+    }
+    
+    func loadImage(for url: String) -> AnyPublisher<UIImage?, Never> {
+        return Just(url)
+        .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
+            let url = URL(string: url)!
+            return ImageLoader.shared.loadImage(from: url)
+        })
+        .eraseToAnyPublisher()
     }
 }

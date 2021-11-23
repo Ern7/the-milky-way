@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class DetailPageViewController : UIViewController {
     
@@ -16,6 +17,7 @@ class DetailPageViewController : UIViewController {
     @IBOutlet weak var photoImageView : UIImageView!
     
     
+    private var cancellable: AnyCancellable?
     public var itemVM: ItemViewModel!
     
     override func viewDidLoad() {
@@ -24,5 +26,11 @@ class DetailPageViewController : UIViewController {
         titleLabel.text = itemVM.title
         subtitleLabel.text = itemVM.subtitle
         descriptionLabel.text = itemVM.dataDescription
+        
+        cancellable = itemVM.loadImage(for: itemVM.photo).sink { [unowned self] image in
+            self.photoImageView.image = image
+            
+        }
     }
+    
 }

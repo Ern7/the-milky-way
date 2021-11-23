@@ -7,10 +7,15 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class HomePageTableViewController : UITableViewController {
     
+    //View Model
     var itemListViewModel = ItemListViewModel()
+    
+    //Observers
+    var imageObservers: [AnyCancellable] = []
     
     //Segue Names
     let showDetailPageSegue = "showDetailPageSegue"
@@ -62,6 +67,7 @@ class HomePageTableViewController : UITableViewController {
         }
         cell.titleLabel?.text = vm.title
         cell.subtitleLabel?.text = vm.subtitle
+        
         return cell
         
     }
