@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class HomePageTableViewCell: UITableViewCell{
     
@@ -14,4 +15,14 @@ class HomePageTableViewCell: UITableViewCell{
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
+    var cancellable: AnyCancellable?
+    
+    var onReuse: () -> Void = {}
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        onReuse()
+        photoImageView.image = nil
+    }
+
 }

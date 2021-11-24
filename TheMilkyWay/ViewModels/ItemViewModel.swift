@@ -78,9 +78,10 @@ extension ItemViewModel {
     }
     
     func loadImage(for url: String) -> AnyPublisher<UIImage?, Never> {
-        return Just(url)
+        var urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return Just(urlString)
         .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
-            let url = URL(string: url)!
+            let url = URL(string: urlString!)!
             return ImageLoader.shared.loadImage(from: url)
         })
         .eraseToAnyPublisher()

@@ -20,6 +20,7 @@ class HomePageTableViewController : UITableViewController {
     //Segue Names
     let showDetailPageSegue = "showDetailPageSegue"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchItems()
@@ -68,6 +69,9 @@ class HomePageTableViewController : UITableViewController {
         cell.titleLabel?.text = vm.title
         cell.subtitleLabel?.text = vm.subtitle
         
+        cell.cancellable = vm.loadImage(for: vm.photo).sink { [unowned self] image in
+            cell.photoImageView.image = image
+        }
         return cell
         
     }
