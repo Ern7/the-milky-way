@@ -1,15 +1,19 @@
 //
-//  HomePageTableViewController.swift
+//  HomePageViewController.swift
 //  TheMilkyWay
 //
-//  Created by Ernest Nyumbu on 2021/11/23.
+//  Created by Ernest Nyumbu on 2021/11/24.
 //
 
 import Foundation
 import UIKit
 import Combine
 
-class HomePageTableViewController : UITableViewController {
+
+class HomePageViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     //View Model
     var itemListViewModel = ItemListViewModel()
@@ -23,12 +27,23 @@ class HomePageTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //navigationItem.largeTitleDisplayMode = .always
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.delegate = self
+        tableView.dataSource = self
         fetchItems()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func fetchItems(){
-        
+        showLoader()
         WebService.shared.load(resource: NasaResponse.all) { [weak self] result in
+            self?.hideLoader()
             switch result {
             case .success(let nasaResponse):
                 print(nasaResponse)
@@ -51,15 +66,15 @@ class HomePageTableViewController : UITableViewController {
     }
     
     // MARK: - TableView
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemListViewModel.itemsViewModel.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let vm = self.itemListViewModel.itemViewModel(at: indexPath.row)
         
@@ -76,6 +91,11 @@ class HomePageTableViewController : UITableViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == showDetailPageSegue,
@@ -83,6 +103,21 @@ class HomePageTableViewController : UITableViewController {
             let selectedIndex = tableView.indexPathForSelectedRow?.row
         {
             destination.itemVM = self.itemListViewModel.itemViewModel(at: selectedIndex)
+        }
+    }
+    
+    //MARK: - Loader
+    private func showLoader() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.isHidden = false
+            self.activityIndicatorView.startAnimating()
+        }
+    }
+    
+    private func hideLoader() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
 }

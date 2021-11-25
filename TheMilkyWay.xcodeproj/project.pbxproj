@@ -18,11 +18,11 @@
 		0F1CDA22274C0F8900343B28 /* NasaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA21274C0F8900343B28 /* NasaResponse.swift */; };
 		0F1CDA24274C0FF000343B28 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA23274C0FF000343B28 /* WebService.swift */; };
 		0F1CDA26274CDC4400343B28 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA25274CDC4400343B28 /* ItemViewModel.swift */; };
-		0F1CDA28274CF77400343B28 /* HomePageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA27274CF77400343B28 /* HomePageTableViewController.swift */; };
 		0F1CDA2B274CF9CC00343B28 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA2A274CF9CC00343B28 /* HomePageTableViewCell.swift */; };
 		0F1CDA2D274D0BA200343B28 /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA2C274D0BA200343B28 /* DetailPageViewController.swift */; };
 		0F1CDA30274D169B00343B28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA2F274D169B00343B28 /* ImageCache.swift */; };
 		0F1CDA32274D16E100343B28 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CDA31274D16E100343B28 /* ImageLoader.swift */; };
+		0FC0E92F274E9620004B7160 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0E92E274E9620004B7160 /* HomePageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +58,11 @@
 		0F1CDA21274C0F8900343B28 /* NasaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaResponse.swift; sourceTree = "<group>"; };
 		0F1CDA23274C0FF000343B28 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		0F1CDA25274CDC4400343B28 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
-		0F1CDA27274CF77400343B28 /* HomePageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewController.swift; sourceTree = "<group>"; };
 		0F1CDA2A274CF9CC00343B28 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		0F1CDA2C274D0BA200343B28 /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
 		0F1CDA2F274D169B00343B28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0F1CDA31274D16E100343B28 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		0FC0E92E274E9620004B7160 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +149,8 @@
 		0F1CDA1D274C076300343B28 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F1CDA27274CF77400343B28 /* HomePageTableViewController.swift */,
 				0F1CDA2C274D0BA200343B28 /* DetailPageViewController.swift */,
+				0FC0E92E274E9620004B7160 /* HomePageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 				0F1CDA30274D169B00343B28 /* ImageCache.swift in Sources */,
 				0F1CD9F0274C064900343B28 /* SceneDelegate.swift in Sources */,
 				0F1CDA24274C0FF000343B28 /* WebService.swift in Sources */,
+				0FC0E92F274E9620004B7160 /* HomePageViewController.swift in Sources */,
 				0F1CDA26274CDC4400343B28 /* ItemViewModel.swift in Sources */,
 				0F1CDA22274C0F8900343B28 /* NasaResponse.swift in Sources */,
-				0F1CDA28274CF77400343B28 /* HomePageTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +517,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheMilkyWay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Milky Way";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -544,6 +545,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheMilkyWay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Milky Way";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
