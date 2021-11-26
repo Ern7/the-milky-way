@@ -46,11 +46,23 @@ class HomePageViewController : UIViewController, UITableViewDelegate, UITableVie
             self?.hideLoader()
             switch result {
             case .success(let nasaResponse):
-                print(nasaResponse)
-                self?.itemListViewModel.itemsViewModel = nasaResponse.collection.items.map(ItemViewModel.init)
-                self?.tableView.reloadData()
+                
+                if (nasaResponse.collection.items.count == 0){
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Empty!", message: "No Nasa data was found on the server.", preferredStyle: .alert)
+
+                            alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                                self?.fetchItems()
+                            }))
+
+                            self?.present(alert, animated: true)
+                        }
+                }
+                else {
+                    self?.itemListViewModel.itemsViewModel = nasaResponse.collection.items.map(ItemViewModel.init)
+                    self?.tableView.reloadData()
+                }
             case .failure(let error):
-                print(error)
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "That didn't work!", message: error.localizedDescription, preferredStyle: .alert)
 

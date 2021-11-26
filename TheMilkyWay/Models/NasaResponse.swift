@@ -105,8 +105,6 @@ extension NasaResponse {
             fatalError("URL is incorrect!")
         }
         
-        var resource = Resource<NasaResponse?>(url: url)
-        
         return Resource<NasaResponse>(url: url)
     }()
 }
