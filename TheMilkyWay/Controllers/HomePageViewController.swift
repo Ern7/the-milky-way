@@ -18,17 +18,12 @@ class HomePageViewController : UIViewController, UITableViewDelegate, UITableVie
     //View Model
     var itemListViewModel = ItemListViewModel()
     
-    //Observers
-    var imageObservers: [AnyCancellable] = []
-    
     //Segue Names
     let showDetailPageSegue = "showDetailPageSegue"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.largeTitleDisplayMode = .always
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +32,6 @@ class HomePageViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func fetchItems(){
